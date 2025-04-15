@@ -1,0 +1,38 @@
+actor: Codeception\Actor
+paths:
+    tests: tests
+    output: tests/_output
+    data: tests/_data
+    support: tests/_support
+    helpers: tests/_support/Helper
+    acceptance: tests/acceptance
+    functional: tests/functional
+    unit: tests/unit
+    env: tests/_env
+    bootstrap: tests/_bootstrap.php
+    config: codeception.yml
+    extensions:
+        enabled:
+            - Codeception\Extension\RunFailed
+        config:
+            Codeception\Extension\RunFailed:
+                output: tests/_output/run_failed.txt
+settings:
+    bootstrap: _bootstrap.php
+    colors: true
+    memory_limit: 1024M
+    log: true
+    log_level: debug
+    log_file: tests/_output/log.txt
+    test_suffix: Test.php
+    actor_suffix: Tester
+    suite: 
+        acceptance:
+            actor: AcceptanceTester
+            path: tests/acceptance
+        functional:
+            actor: FunctionalTester
+            path: tests/functional
+        unit:
+            actor: UnitTester
+            path: tests/unit
